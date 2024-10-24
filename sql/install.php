@@ -54,19 +54,20 @@ $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'dbblog_category_post` (
             PRIMARY KEY (`id_dbblog_category`, `id_dbblog_post`)
         ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
 
-$sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'dbblog_post` (
-            `id_dbblog_post` int(11) NOT NULL AUTO_INCREMENT,
-            `id_dbblog_category` int(11) NOT NULL,
-            `type` int(11) NOT NULL DEFAULT \'1\',
-            `author` int(11) NOT NULL,
-            `featured` tinyint(1) NOT NULL DEFAULT \'0\',
-            `index` tinyint(1) unsigned NOT NULL DEFAULT \'1\',
-            `views` int(11) unsigned NOT NULL DEFAULT \'0\',
-            `active` tinyint(1) unsigned NOT NULL DEFAULT \'0\',
-            `date_add` datetime NOT NULL,
-            `date_upd` datetime NOT NULL,
-            PRIMARY KEY (`id_dbblog_post`)
-        ) ENGINE=' . _MYSQL_ENGINE_ . ' DEFAULT CHARSET=utf8;';
+$sql[] = 'CREATE TABLE IF NOT EXISTS `PREFIX_dbblog_post` (
+    `id_dbblog_post` int(11) NOT NULL AUTO_INCREMENT,
+    `id_dbblog_category` int(11) NOT NULL,
+    `type` int(11) NOT NULL DEFAULT '1',
+    `author` int(11) DEFAULT NULL,
+    `featured` tinyint(1) NOT NULL DEFAULT '0',
+    `views` int(11) NOT NULL DEFAULT '0',
+    `active` tinyint(1) NOT NULL DEFAULT '1',
+    `index` tinyint(1) NOT NULL DEFAULT '1',
+    `date_add` datetime NOT NULL,
+    `date_upd` datetime NOT NULL,
+    `date_publish` datetime NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (`id_dbblog_post`)
+) ENGINE=ENGINE_TYPE DEFAULT CHARSET=utf8;';
 
 $sql[] = 'CREATE TABLE IF NOT EXISTS `' . _DB_PREFIX_ . 'dbblog_post_lang` (
             `id_dbblog_post` int(11) NOT NULL,

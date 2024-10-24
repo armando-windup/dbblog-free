@@ -81,6 +81,12 @@ class AdminDbBlogPostController extends ModuleAdminController
                 'search' => true,
                 'width' => 25,
             ),
+            'date_publish' => array(
+                'title' => $this->l('Fecha de publicación'),
+                'type' => 'datetime',
+                'align' => 'center',
+                'filter_key' => 'a!date_publish',
+            ),
         );
 
         if($this->module->premium == 1) {
@@ -334,6 +340,15 @@ class AdminDbBlogPostController extends ModuleAdminController
                             'label' => $this->trans('No', array(), 'Admin.Global')
                         )
                     ),
+                ),
+
+                array(
+                    'type' => 'datetime',
+                    'label' => $this->l('Fecha de publicación'),
+                    'name' => 'date_publish',
+                    'required' => true,
+                    'desc' => $this->l('Seleccione la fecha y hora en que desea que el post se publique.'),
+                    'col' => 3,
                 ),
                 
             ),
